@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.box{
+			width: 200px;
+			border: 1px solid #000;
+		}
+		.text1{
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 5;
+		}
+		.text2{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<h4>多行文本溢出省略</h4>
+	<div class="box text1">
+		为你弹奏肖邦的夜曲，纪念我死去的爱情。跟夜风一样的声音，心碎的很好听。手在键盘敲很轻，我给的思念很小心。你埋葬的地方叫幽冥。如果邪恶是首华丽残酷的乐章  。它的终场 我会 亲手写上 。晨曦的光 风干最后一道忧伤 。黑色的墨 染上安详 。
+	</div>
+	<h4>单行文本溢出省略</h4>
+	<div class="box text2">
+		为你弹奏肖邦的夜曲，纪念我死去的爱情。跟夜风一样的声音，心碎的很好听。手在键盘敲很轻，我给的思念很小心。你埋葬的地方叫幽冥。如果邪恶是首华丽残酷的乐章  。它的终场 我会 亲手写上 。晨曦的光 风干最后一道忧伤 。黑色的墨 染上安详 。
+	</div>
+</body>
+</html>
