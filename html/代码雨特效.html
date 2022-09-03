@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>代码雨特效</title>
+	<style type="text/css">
+		.btn{
+			position: fixed;
+			top: 20px;
+			left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">开始</button>
+	<canvas id="bg"></canvas>
+	<script>
+		const btn = document.querySelector('.btn')
+		btn.onclick = () => {
+			start()
+			btn.style.display = 'none'
+		}
+		const cvs = document.querySelector('#bg')
+		const width = window.innerWidth
+		const height = window.innerHeight
+		cvs.width = width
+		cvs.height = height
+
+		const ctx = cvs.getContext('2d')
+		// 列宽
+		const columnWidth = 20
+		// 列数
+		const columnCount = Math.floor(width / columnWidth)
+		// 记录每列写到第几个字
+		const columnNextIndex = new Array(columnCount)
+		columnNextIndex.fill(1)
+		ctx.fillStyle = '#00000'
+		ctx.fillRect(0,0,width,height)
+		function draw() {
+			ctx.fillStyle = 'rgba(0,0,0,0.25)'
+			ctx.fillRect(0,0,width,height)
+			const fz = 20
+			ctx.fillStyle = randomColor()
+			ctx.font = `${fz}px Serif`
+			for(let i = 0; i < columnCount; i++) {
+				const x = i * columnWidth
+				const y = 20 * columnNextIndex[i]
+				ctx.fillText(randomText(), x, y)
+				if (y > height && Math.random() > 0.99) {
+					columnNextIndex[i] = 0
+				} else {
+					columnNextIndex[i]++
+				}
+			}
+		}
+		function start () {
+			setInterval(() => {
+				draw()
+			}, 1000 / 24)
+		}
+
+		// 随机色
+		function randomColor() {
+			const r = Math.floor(Math.random() * 256)
+			const g = Math.floor(Math.random() * 256)
+			const b = Math.floor(Math.random() * 256)
+			return `rgb(${r},${g},${b})`
+		}
+		// 随机字
+		function randomText() {
+			const textStr = '0123456789qwertyuiopasdfghjklzxcvbnm,./;[]\-+*/!@#$%^&*(){}:"<>?|~`'
+			const textArr = textStr.split('')
+			const len = textArr.length
+			const randomNum = Math.floor(Math.random() * len)
+			return textArr[randomNum]
+		}
+
+	</script>
+</body>
+</html>

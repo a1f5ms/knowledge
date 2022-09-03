@@ -58,4 +58,66 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 // 4 启动项目，访问服务，请求地址'/api-docs'，可以看到swagger已经可以访问了。
 ```
 
-#### 3、接口添加swagger注释
+#### 3、创建路由文件
+
+```js
+// 路由
+const userRoute = require('./routes/users.js')
+app.use('/users',userRoute)
+```
+
+```js
+const express = require('express')
+const router = express.Router()
+
+router.post('/login', (req,res) => {
+	let name = req.query.name
+	res.send({
+		data: {
+			name: req.query.name
+		},
+		message: '登录成功',
+		status: 200
+	})
+})
+module.exports = router
+```
+
+#### 4、添加swagger注释
+
+```js
+/**
+ * @swagger
+ * /users/login:
+ *  post: 
+ *      tags: 
+ *        - 用户
+ *      summary: 用户登录方法
+ *      description: 用户登录方法的详细描述
+ *      parameters: 
+ *        - name: name
+ *          description: 用户名
+ *          in: query
+ *          required: true
+ *          type: string
+ *        - name: password
+ *          description: 密码
+ *          in: query
+ *          required: true
+ *          type: string
+ *      responses: 
+ *          200:
+ *              description: 请求成功
+ */
+router.post('/login', (req,res) => {
+	let name = req.query.name
+	res.send({
+		data: {
+			name: req.query.name
+		},
+		message: '登录成功',
+		status: 200
+	})
+})
+```
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>九宫格图片</title>
+	<style type="text/css">
+		body{
+			background-color: #000;
+		}
+		div{
+			box-sizing: border-box;
+		}
+		.img-container{
+			width: 450px;
+			height: 450px;
+			margin: 130px auto;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.img-item{
+			width: 150px;
+			height: 150px;
+			border: 1px solid #fff;
+			background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202001%2F08%2F20200108210916_jpipk.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1664806345&t=47079339451f4cba5b47ae835c97b18f");
+			background-size: 450px,450px;
+			position: relative;
+			transition: all 0.5s;
+		}
+		.img-item:nth-child(3n + 1){
+			left: -20px;
+			background-position-x: 0;
+		}
+		.img-item:nth-child(3n + 2){
+			background-position-x: -150px;
+		}
+		.img-item:nth-child(3n + 3){
+			left: 20px;
+			background-position-x: -300px;
+		}
+		.img-item{
+			top: 20px;
+			background-position-y: -300px;
+		}
+		.img-item:nth-child(-n + 6){
+			top: 0;
+			background-position-y: -150px;
+		}
+		.img-item:nth-child(-n + 3){
+			top: -20px;
+			background-position-y: 0px;
+		}
+		.img-container:hover .img-item{
+			border: 0px solid #fff;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="img-container">
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+		<div class="img-item"></div>
+	</div>
+</body>
+</html>
